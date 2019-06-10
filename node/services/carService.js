@@ -55,5 +55,21 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+	// 修改购物车商品的数量
+	modifyNum: async (req, res) => {
+		let id = req.body.id, num = req.body.num;
+		try {
+			await carModel.increment(["num"], {
+				by: num,
+				where: {
+					id: id
+				}
+			});
+			res.send(resultMessage.success([]));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
 
 };

@@ -10,6 +10,10 @@ router.get("/getByOpenid", (req, res) => {
 router.post("/addCarGoods", (req, res) => {
 	carService.addCarGoods(req, res);
 });
+// 更改购物车数量 modifyNum
+router.post("/modifyNum", (req, res) => {
+	carService.modifyNum(req, res);
+});
 
 
 module.exports = router;
