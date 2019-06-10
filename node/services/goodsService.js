@@ -23,6 +23,39 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+	// 根据id获取商品详情
+	getById: async (req, res) => {
+		let id = req.query.id;
+		try {
+			let goods = await GoodsModel.findOne({
+				where: {
+					id: id
+				}
+			});
+			res.send(resultMessage.success(goods));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
+	//  获取同个校园的全部商品
+	getByCampus: async (req, res) => {
+		try {
+			let goods = await GoodsModel.findAll({
+				where: {
+					campus: req.query.position
+				}
+			});
+			let result = [];
+			goods.map(item => {
+				result.push(item.dataValues);
+			});
+			res.send(resultMessage.success(result));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
 	// 根据商品id获取商品
 	getByGoodsId: async (req, res) => {
 		let id = req.query.id;

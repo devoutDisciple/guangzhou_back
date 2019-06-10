@@ -15,7 +15,7 @@ module.exports = function(sequelize) {
 			allowNull: true
 		},
 		desc: {
-			type: Sequelize.STRING(45),
+			type: Sequelize.STRING(8000),
 			allowNull: true
 		},
 		sales: {

@@ -54,6 +54,6 @@ controller(app);
 // });
 
 // // 监听3001端口
-app.listen(3001, () => {
-	console.log(chalk.yellow("server is listenning 3001"));
+app.listen(3002, () => {
+	console.log(chalk.yellow("广州小程序：server is listenning 3002"));
 });
