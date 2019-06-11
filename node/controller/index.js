@@ -9,6 +9,7 @@ const orderController = require("./orderController");
 const evaluateController = require("./evaluateController");
 const todayController = require("./todayController");
 const carController = require("./carController");
+const collectionController = require("./collectionController");
 const router = (app) => {
 	// 用户
 	app.use("/user", userController);
@@ -22,6 +23,8 @@ const router = (app) => {
 	app.use("/today", todayController);
 	// 购物车
 	app.use("/car", carController);
+	// 收藏
+	app.use("/collection", collectionController);
 	// 商店相关
 	app.use("/shop", shopController);
 	// 商品相关
