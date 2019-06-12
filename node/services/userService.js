@@ -13,9 +13,12 @@ module.exports = {
 			console.log(req.query);
 			let query = req.query;
 			let appid = query.appid, AppSecret = query.AppSecret, code = query.code, avatarUrl = query.avatarUrl, name = query.name;
+			console.log(appid, AppSecret, code, avatarUrl, name);
 			request
 				.get(`https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${AppSecret}&js_code=${code}&grant_type=authorization_code`,
 					function(error, response, body) {
+						console.log(error, 333);
+						console.log(body, 111);
 						let data = JSON.parse(body), openid = data.openid;
 						UserModel.findOne({
 							where: {

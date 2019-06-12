@@ -24,7 +24,6 @@ module.exports = {
 		// &trade_type=JSAPI
 		let stringA = "appid="+obj.appid
 			+"&body="+obj.body
-			+"&device_info="+obj.device_info
 			+"&mch_id="+obj.mch_id
 			+"&nonce_str="+obj.nonce_str
 			+"&notify_url="+obj.notify_url
