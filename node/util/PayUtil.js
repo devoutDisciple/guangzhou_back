@@ -28,13 +28,13 @@ module.exports = {
 			+"&mch_id="+obj.mch_id
 			+"&nonce_str="+obj.nonce_str
 			+"&notify_url="+obj.notify_url
+			+"&openid="+obj.openid
 			+"&out_trade_no="+obj.out_trade_no
 			+"&spbill_create_ip="+obj.spbill_create_ip
 			+"&total_fee="+obj.total_fee
 			+"&trade_type="+obj.trade_type;
-		console.log("stringA = ",  stringA);
-		let stringSignTemp = stringA+"&key=2890178+w";
-		console.log("stringAll = ", stringSignTemp);
+		let stringSignTemp = stringA+"&key=" + obj.key;
+		console.log("string = ", stringSignTemp);
 		stringSignTemp = md5(stringSignTemp).toUpperCase();
 		console.log("md5 = ", stringSignTemp);
 		return stringSignTemp;

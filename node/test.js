@@ -1,36 +1,8 @@
-/* jshint indent: 2 */
-const Sequelize = require("sequelize");
-module.exports = function(sequelize) {
-	return sequelize.define("book_list", {
-		id: {
-			type: Sequelize.INTEGER(11),
-			allowNull: false,
-			primaryKey: true
-		},
-		name: {
-			type: Sequelize.STRING(256),
-			allowNull: false
-		},
-		url: {
-			type: Sequelize.STRING(256),
-			allowNull: false
-		},
-		desc: {
-			type: Sequelize.STRING(512),
-			allowNull: false
-		},
-		type: {
-			type: Sequelize.INTEGER(11),
-			allowNull: false,
-			defaultValue: "8"
-		},
-		is_delete: {
-			type: Sequelize.INTEGER(11),
-			allowNull: false,
-			defaultValue: "0"
-		}
-	}, {
-		tableName: "book_list",
-		timestamps: false
-	});
-};
+
+let str = "";
+let arr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+for(let i = 1; i <= 32; i++){
+	let random = Math.floor(Math.random()*arr.length);
+	str += arr[random];
+}
+console.log(str);
