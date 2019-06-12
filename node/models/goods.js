@@ -24,12 +24,12 @@ module.exports = function(sequelize) {
 			defaultValue: "0"
 		},
 		price: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.STRING(11),
 			allowNull: true,
 			defaultValue: "0"
 		},
 		discount: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.STRING(11),
 			allowNull: true,
 			defaultValue: "0"
 		},

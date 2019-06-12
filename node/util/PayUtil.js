@@ -11,12 +11,32 @@ module.exports = {
 	},
 	createSign: function(obj) {
 		//签名算法（把所有的非空的参数，按字典顺序组合起来+key,然后md5加密，再把加密结果都转成大写的即可）
-		var stringA = "appid="+obj.appid+"&body="+obj.body+"&mch_id="+obj.mch_id+"&nonce_str="+obj.nonce_str+"&notify_url="+obj.notify_url+"&openid="+obj.openid+"&out_trade_no="+obj.out_trade_no+"&spbill_create_ip="+obj.spbill_create_ip+"&total_fee="+obj.total_fee+"&trade_type="+obj.trade_type;
-
-
-		let stringSignTemp = stringA+"&key=自己的商户号秘钥";
-		stringSignTemp = md5(stringSignTemp);
-		let signValue = stringSignTemp.toUpperCase();
-		return signValue;
+		// appid=wx2769b76cc1aa3502
+		// &body=微信支付，商品详细描述
+		// &mch_id=1537649941
+		// &nonce_str=U8WGF35ZWQ4GX57JYYLBDAWO9B272WYC
+		// &notify_url=https://www.kdsou.com/kdchange/service_bak/notify.php
+		// &openid=oah4447vOWQegN1z544JfDtqbZuY
+		// &out_trade_no=1560347495576
+		// &sign=F1669EEBA1B1E0C2A791C5627401FF96
+		// &spbill_create_ip=192.168.5.255
+		// &total_fee=1
+		// &trade_type=JSAPI
+		let stringA = "appid="+obj.appid
+			+"&body="+obj.body
+			+"&device_info="+obj.device_info
+			+"&mch_id="+obj.mch_id
+			+"&nonce_str="+obj.nonce_str
+			+"&notify_url="+obj.notify_url
+			+"&out_trade_no="+obj.out_trade_no
+			+"&spbill_create_ip="+obj.spbill_create_ip
+			+"&total_fee="+obj.total_fee
+			+"&trade_type="+obj.trade_type;
+		console.log("stringA = ",  stringA);
+		let stringSignTemp = stringA+"&key=2890178+w";
+		console.log("stringAll = ", stringSignTemp);
+		stringSignTemp = md5(stringSignTemp).toUpperCase();
+		console.log("md5 = ", stringSignTemp);
+		return stringSignTemp;
 	}
 };
