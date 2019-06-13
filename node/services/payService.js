@@ -8,13 +8,14 @@ module.exports = {
 	// 获取同一家商店的所有食物
 	payOrder: async (req, res) => {
 		try {
+			let orderid = PayUtil.createOrderid();
 			let params = {
 				appid: config.appid,	//自己的小程序appid
 				mch_id: config.mch_id,	//自己的商户号
 				nonce_str: PayUtil.getNonceStr(),	//随机字符串
 				body: "贝沃思美食",// 商品描述
-				out_trade_no: "jksfd323", // 用户订单号
-				total_fee: 1, //商品价格 单位分
+				out_trade_no: orderid, // 用户订单号
+				total_fee: Number(req.query.total_fee) * 100, //商品价格 单位分
 				spbill_create_ip: "192.168.5.255", // 发起访问ip
 				//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
 				notify_url: "https://www.kdsou.com/kdchange/service_bak/notify.php",
@@ -58,9 +59,13 @@ module.exports = {
 					xml2js.parseString(body,function(err,result){
 						if(err) return res.send(resultMessage.success("支付失败"));
 						let reData = result.xml;
+						console.log(reData);
+						if(!reData.prepay_id) {
+							return res.send(resultMessage.success(reData.err_code_des ? reData.err_code_des[0] : "支付失败"));
+						}
 						let responseData = {
 							timeStamp: String(new Date().getTime()),
-							nonceStr: reData.nonce_str[0],
+							nonceStr: reData.nonce_str[0] || "",
 							package: "prepay_id=" + reData.prepay_id[0],
 						};
 						let str = `appId=${config.appid}&nonceStr=${responseData.nonceStr}&package=${responseData.package}&signType=MD5&timeStamp=${responseData.timeStamp}&key=${config.key}`;
