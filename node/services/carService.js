@@ -5,6 +5,9 @@ const carModel = car(sequelize);
 const goods = require("../models/goods");
 const GoodsModel = goods(sequelize);
 carModel.belongsTo(GoodsModel, { foreignKey: "goods_id", targetKey: "id", as: "goodsDetail",});
+const shop = require("../models/shop");
+const ShopModel = shop(sequelize);
+carModel.belongsTo(ShopModel, { foreignKey: "shop_id", targetKey: "id", as: "shopDetail",});
 
 module.exports = {
 	// 添加购物车
@@ -39,6 +42,9 @@ module.exports = {
 				include: [{
 					model: GoodsModel,
 					as: "goodsDetail",
+				}, {
+					model: ShopModel,
+					as: "shopDetail",
 				}],
 				order: [
 					// will return `name`  DESC 降序  ASC 升序
@@ -58,6 +64,8 @@ module.exports = {
 	// 修改购物车商品的数量
 	modifyNum: async (req, res) => {
 		let id = req.body.id, num = req.body.num;
+		console.log(id);
+		console.log(num);
 		try {
 			await carModel.increment(["num"], {
 				by: num,

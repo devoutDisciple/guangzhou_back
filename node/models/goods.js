@@ -10,6 +10,10 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: true
 		},
+		title: {
+			type: Sequelize.STRING(800),
+			allowNull: true
+		},
 		url: {
 			type: Sequelize.STRING(255),
 			allowNull: true

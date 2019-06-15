@@ -51,7 +51,7 @@ module.exports = function(sequelize) {
 			allowNull: true
 		},
 		package_cost: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.STRING(45),
 			allowNull: true
 		},
 		start_time: {

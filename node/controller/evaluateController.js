@@ -14,8 +14,8 @@ router.post("/addEvaluate", async (req, res) => {
 	}
 });
 // 根据商店id获取评价
-router.get("/getEvaluateByShopid", (req, res) => {
-	evaluateService.getEvaluateByShopid(req, res);
+router.get("/getEvaluateByGoodsId", (req, res) => {
+	evaluateService.getEvaluateByGoodsId(req, res);
 });
 
 module.exports = router;
