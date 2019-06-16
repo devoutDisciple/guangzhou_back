@@ -16,7 +16,7 @@ module.exports = {
 				body: "贝沃思美食",// 商品描述
 				out_trade_no: orderid, // 用户订单号
 				total_fee: Number(req.query.total_fee) * 100, //商品价格 单位分
-				spbill_create_ip: "192.168.5.255", // 发起访问ip
+				spbill_create_ip: "47.106.208.52", // 发起访问ip
 				//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
 				notify_url: "https://www.kdsou.com/kdchange/service_bak/notify.php",
 				trade_type: "JSAPI",// 默认 交易类型
@@ -46,7 +46,6 @@ module.exports = {
 							<trade_type>${params.trade_type}</trade_type>
 							<sign>${sign}</sign>
 						</xml>`;
-			console.log(formData, 57);
 			//发起请求，获取微信支付的一些必要信息
 			request({
 				url: reqUrl,
