@@ -31,6 +31,10 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(10000),
 			allowNull: true
 		},
+		create_time: {
+			type: Sequelize.DATE,
+			allowNull: true
+		},
 		is_delete: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,

@@ -23,10 +23,6 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(255),
 			allowNull: true
 		},
-		sex: {
-			type: Sequelize.STRING(45),
-			allowNull: true
-		},
 		username: {
 			type: Sequelize.STRING(45),
 			allowNull: true

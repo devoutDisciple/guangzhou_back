@@ -23,6 +23,30 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+	// 获取今日推荐
+	getToday: async (req, res) => {
+		let position = req.query.position;
+		try {
+			let goods = await GoodsModel.findAll({
+				where: {
+					position: position,
+					today: 1
+				},
+				order: [
+					// will return `name`  DESC 降序  ASC 升序
+					["sort", "DESC"],
+				],
+			});
+			let result = [];
+			goods.map(item => {
+				result.push(item.dataValues);
+			});
+			res.send(resultMessage.success(result));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
 	// 根据id获取商品详情
 	getById: async (req, res) => {
 		let id = req.query.id;
@@ -43,8 +67,12 @@ module.exports = {
 		try {
 			let goods = await GoodsModel.findAll({
 				where: {
-					campus: req.query.position
-				}
+					position: req.query.position
+				},
+				order: [
+					// will return `name`  DESC 降序  ASC 升序
+					["sort", "DESC"],
+				],
 			});
 			let result = [];
 			goods.map(item => {

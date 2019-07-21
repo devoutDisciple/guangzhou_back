@@ -18,6 +18,10 @@ router.get("/getById", (req, res) => {
 router.post("/addSales", (req, res) => {
 	goodsService.getByShopId(req, res);
 });
+// 获取今日推荐
+router.get("/getToday", (req, res) => {
+	goodsService.getToday(req, res);
+});
 
 
 module.exports = router;

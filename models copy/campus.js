@@ -1,23 +1,19 @@
 const Sequelize = require("sequelize");
 module.exports = function(sequelize) {
-	return sequelize.define("today", {
+	return sequelize.define("campus", {
 		id: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,
 			primaryKey: true
 		},
-		goods_id: {
-			type: Sequelize.INTEGER(11),
+		name: {
+			type: Sequelize.STRING(45),
+			allowNull: true,
+			defaultValue: "学校名称"
+		},
+		address: {
+			type: Sequelize.STRING(8000),
 			allowNull: true
-		},
-		campus: {
-			type: Sequelize.STRING(255),
-			allowNull: true,
-		},
-		sort: {
-			type: Sequelize.INTEGER(11),
-			allowNull: true,
-			defaultValue: "1"
 		},
 		is_delete: {
 			type: Sequelize.INTEGER(11),
@@ -25,7 +21,7 @@ module.exports = function(sequelize) {
 			defaultValue: "1"
 		}
 	}, {
-		tableName: "today",
+		tableName: "campus",
 		timestamps: false
 	});
 };

@@ -10,6 +10,10 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: true
 		},
+		title: {
+			type: Sequelize.STRING(800),
+			allowNull: true
+		},
 		url: {
 			type: Sequelize.STRING(255),
 			allowNull: true
@@ -24,12 +28,12 @@ module.exports = function(sequelize) {
 			defaultValue: "0"
 		},
 		price: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.STRING(11),
 			allowNull: true,
 			defaultValue: "0"
 		},
 		discount: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.STRING(11),
 			allowNull: true,
 			defaultValue: "0"
 		},

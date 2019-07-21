@@ -18,12 +18,12 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: true
 		},
-		avatarUrl: {
-			type: Sequelize.STRING(800),
-			allowNull: true
-		},
 		username: {
 			type: Sequelize.STRING(45),
+			allowNull: true
+		},
+		avatarUrl: {
+			type: Sequelize.STRING(800),
 			allowNull: true
 		},
 		desc: {
@@ -39,12 +39,13 @@ module.exports = function(sequelize) {
 			allowNull: true
 		},
 		create_time: {
-			type: Sequelize.STRING(45),
+			type: Sequelize.BIGINT,
 			allowNull: true
 		},
 		is_delete: {
-			type: Sequelize.Sequelize.INTEGER(11),
-			allowNull: true
+			type: Sequelize.INTEGER(11),
+			allowNull: false,
+			defaultValue: "1"
 		}
 	}, {
 		tableName: "evaluate",

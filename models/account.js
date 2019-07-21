@@ -1,36 +1,35 @@
 const Sequelize = require("sequelize");
 module.exports = function(sequelize) {
-	return sequelize.define("type", {
+	return sequelize.define("account", {
 		id: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,
 			primaryKey: true
 		},
-		name: {
-			type: Sequelize.STRING(45),
-			allowNull: true,
-			defaultValue: "美食"
-		},
-		url: {
+		username: {
 			type: Sequelize.STRING(255),
 			allowNull: true
 		},
-		campus: {
-			type: Sequelize.STRING(45),
+		password: {
+			type: Sequelize.STRING(255),
 			allowNull: true
 		},
-		sort: {
+		shopid: {
+			type: Sequelize.INTEGER(11),
+			allowNull: true
+		},
+		role: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,
-			defaultValue: "1"
+			defaultValue: "2"
 		},
 		is_delete: {
-			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			type: Sequelize.STRING(255),
+			allowNull: false,
 			defaultValue: "1"
 		}
 	}, {
-		tableName: "type",
+		tableName: "account",
 		timestamps: false
 	});
 };

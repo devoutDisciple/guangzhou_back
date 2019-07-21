@@ -3,8 +3,12 @@ const router = express.Router();
 const userService = require("../services/userService");
 
 // 用户注册，返回openid
-router.get("/register", (req, res) => {
+router.post("/register", (req, res) => {
 	userService.register(req, res);
+});
+// 判断用户是否存在
+router.post("/getUser", (req, res) => {
+	userService.getUser(req, res);
 });
 // 通过openid获取用户信息
 router.get("/getUserByOpenid", (req, res) => {

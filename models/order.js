@@ -10,10 +10,6 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(255),
 			allowNull: true
 		},
-		shop_detail: {
-			type: Sequelize.STRING(500),
-			allowNull: true
-		},
 		order_list: {
 			type: Sequelize.STRING(10000),
 			allowNull: true
@@ -28,19 +24,23 @@ module.exports = function(sequelize) {
 		},
 		discount_price: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true
+			allowNull: true,
+			defaultValue: "0"
 		},
 		order_time: {
-			type: Sequelize.STRING(45),
+			type: Sequelize.BIGINT,
 			allowNull: true
 		},
 		status: {
-			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			type: Sequelize.STRING(45),
+			allowNull: false,
+			defaultValue: "5",
+			primaryKey: true
 		},
 		is_delete: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,
+			defaultValue: "1"
 		}
 	}, {
 		tableName: "order",

@@ -5,15 +5,37 @@ const request = require("request");
 const sequelize = require("../dataSource/MysqlPoolClass");
 const user = require("../models/user");
 const UserModel = user(sequelize);
+const moment = require("moment");
 
 module.exports = {
-	// 用户登录
-	register: (req, res) => {
+	// 判断用户是否存在
+	getUser: async (req, res) => {
 		try {
-			console.log(req.query);
-			let query = req.query;
-			let appid = query.appid, AppSecret = query.AppSecret, code = query.code, avatarUrl = query.avatarUrl, name = query.name;
-			console.log(appid, AppSecret, code, avatarUrl, name);
+			let body = req.body;
+			let appid = body.appid, AppSecret = body.AppSecret, code = body.code;
+			request
+				.get(`https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${AppSecret}&js_code=${code}&grant_type=authorization_code`,
+					function(error, response, body) {
+						let data = JSON.parse(body), openid = data.openid;
+						UserModel.findOne({
+							where: {
+								openid: openid
+							}
+						}).then(async (user) => {
+							if(user) return res.send(resultMessage.success(user));
+							res.send(resultMessage.success("nouser"));
+						});
+					});
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
+	// 用户注册
+	register: async (req, res) => {
+		try {
+			let body = req.body;
+			let appid = body.appid, AppSecret = body.AppSecret, code = body.code, avatarUrl = body.avatarUrl, name = body.name;
 			request
 				.get(`https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${AppSecret}&js_code=${code}&grant_type=authorization_code`,
 					function(error, response, body) {
@@ -27,6 +49,7 @@ module.exports = {
 								openid: openid,
 								name: name,
 								avatarUrl: avatarUrl,
+								create_time: moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss")
 							}).then(data => {
 								console.log(data);
 								res.send(resultMessage.success({

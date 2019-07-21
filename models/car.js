@@ -25,11 +25,12 @@ module.exports = function(sequelize) {
 		},
 		create_time: {
 			type: Sequelize.STRING(255),
-			allowNull: true
+			allowNull: false
 		},
 		is_delete: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true
+			allowNull: false,
+			defaultValue: "1"
 		}
 	}, {
 		tableName: "car",
