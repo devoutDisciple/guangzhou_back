@@ -64,6 +64,7 @@ module.exports = {
 					package_cost: item.goodsDetail.package_cost,
 					url: item.goodsDetail.url,
 					send_price: item.shopDetail.send_price
+
 				});
 			});
 			res.send(resultMessage.success(result));
