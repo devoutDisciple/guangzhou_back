@@ -1,12 +1,12 @@
 const Sequelize = require("sequelize");
 module.exports = function(sequelize) {
-	return sequelize.define("car", {
+	return sequelize.define("bill", {
 		id: {
 			type: Sequelize.INTEGER(11),
 			allowNull: false,
 			primaryKey: true
 		},
-		openid: {
+		code: {
 			type: Sequelize.STRING(255),
 			allowNull: true
 		},
@@ -14,26 +14,36 @@ module.exports = function(sequelize) {
 			type: Sequelize.INTEGER(11),
 			allowNull: false
 		},
-		goods_id: {
+		type: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true
+			allowNull: false,
+			defaultValue: "1"
 		},
-		num: {
+		account: {
+			type: Sequelize.STRING(255),
+			allowNull: false
+		},
+		money: {
+			type: Sequelize.STRING(255),
+			allowNull: false
+		},
+		status: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,
 			defaultValue: "1"
 		},
 		create_time: {
-			type: Sequelize.STRING(255),
-			allowNull: false
-		},
-		is_delete: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.DATE,
 			allowNull: false,
-			defaultValue: "1"
+			defaultValue: "CURRENT_TIMESTAMP(6)"
+		},
+		modify_time: {
+			type: Sequelize.DATE,
+			allowNull: true,
+			timestamps: false
 		}
 	}, {
-		tableName: "car",
+		tableName: "bill",
 		timestamps: false
 	});
 };

@@ -3,21 +3,21 @@ module.exports = function(sequelize) {
 	return sequelize.define("shop", {
 		id: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			primaryKey: true
 		},
 		name: {
 			type: Sequelize.STRING(45),
-			allowNull: true
+			allowNull: false
 		},
 		status: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			defaultValue: "1"
 		},
 		typeid: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			defaultValue: "1"
 		},
 		address: {

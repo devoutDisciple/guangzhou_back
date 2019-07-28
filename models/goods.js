@@ -3,12 +3,12 @@ module.exports = function(sequelize) {
 	return sequelize.define("goods", {
 		id: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			primaryKey: true
 		},
 		name: {
 			type: Sequelize.STRING(45),
-			allowNull: true
+			allowNull: false
 		},
 		position: {
 			type: Sequelize.STRING(255),
@@ -20,7 +20,7 @@ module.exports = function(sequelize) {
 		},
 		url: {
 			type: Sequelize.STRING(255),
-			allowNull: true
+			allowNull: false
 		},
 		desc: {
 			type: Sequelize.STRING(8000),

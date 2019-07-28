@@ -3,7 +3,7 @@ module.exports = function(sequelize) {
 	return sequelize.define("collection", {
 		id: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			primaryKey: true
 		},
 		goods_id: {

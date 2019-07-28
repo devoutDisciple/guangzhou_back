@@ -3,16 +3,20 @@ module.exports = function(sequelize) {
 	return sequelize.define("order", {
 		id: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			primaryKey: true
 		},
 		openid: {
 			type: Sequelize.STRING(255),
-			allowNull: true
+			allowNull: false
+		},
+		shopid: {
+			type: Sequelize.INTEGER(11),
+			allowNull: false
 		},
 		order_list: {
 			type: Sequelize.STRING(10000),
-			allowNull: true
+			allowNull: false
 		},
 		desc: {
 			type: Sequelize.STRING(45),
@@ -28,13 +32,13 @@ module.exports = function(sequelize) {
 			defaultValue: "0"
 		},
 		order_time: {
-			type: Sequelize.BIGINT,
+			type: Sequelize.DATE,
 			allowNull: true
 		},
 		status: {
 			type: Sequelize.STRING(45),
 			allowNull: false,
-			defaultValue: "5",
+			defaultValue: "1",
 			primaryKey: true
 		},
 		is_delete: {

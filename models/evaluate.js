@@ -3,10 +3,14 @@ module.exports = function(sequelize) {
 	return sequelize.define("evaluate", {
 		id: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			primaryKey: true
 		},
 		goods_id: {
+			type: Sequelize.INTEGER(11),
+			allowNull: true
+		},
+		shopid: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true
 		},

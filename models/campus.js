@@ -3,12 +3,12 @@ module.exports = function(sequelize) {
 	return sequelize.define("campus", {
 		id: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			primaryKey: true
 		},
 		name: {
 			type: Sequelize.STRING(45),
-			allowNull: true,
+			allowNull: false,
 			defaultValue: "学校名称"
 		},
 		floor: {
@@ -17,7 +17,7 @@ module.exports = function(sequelize) {
 		},
 		sort: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			defaultValue: "1"
 		},
 		is_delete: {

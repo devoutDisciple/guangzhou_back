@@ -3,20 +3,20 @@ module.exports = function(sequelize) {
 	return sequelize.define("account", {
 		id: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			primaryKey: true
 		},
 		username: {
 			type: Sequelize.STRING(255),
-			allowNull: true
+			allowNull: false
 		},
 		password: {
 			type: Sequelize.STRING(255),
-			allowNull: true
+			allowNull: false
 		},
 		shopid: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true
+			allowNull: false
 		},
 		role: {
 			type: Sequelize.INTEGER(11),

@@ -3,12 +3,12 @@ module.exports = function(sequelize) {
 	return sequelize.define("user", {
 		id: {
 			type: Sequelize.INTEGER(11),
-			allowNull: true,
+			allowNull: false,
 			primaryKey: true
 		},
 		openid: {
 			type: Sequelize.STRING(255),
-			allowNull: true,
+			allowNull: false,
 			unique: true
 		},
 		name: {
