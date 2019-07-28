@@ -17,6 +17,6 @@ router.post("/add", async (req, res) => {
 });
 // 获取订单通过openid  getList
 router.get("/getListByOpenid", (req, res) => {
-	orderService.getList(req, res);
+	orderService.getListByOpenid(req, res);
 });
 module.exports = router;

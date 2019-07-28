@@ -18,7 +18,7 @@ module.exports = {
 				},
 				order: [
 					// will return `name`  DESC 降序  ASC 升序
-					["sort", "ASC"],
+					["sort", "DESC"],
 				]
 			});
 			let result = [];
@@ -60,7 +60,7 @@ module.exports = {
 				},
 				order: [
 					// will return `name`  DESC 降序  ASC 升序
-					["sort", "ASC"],
+					["sort", "DESC"],
 				]
 			});
 			res.send(resultMessage.success(shop || []));

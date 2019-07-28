@@ -13,7 +13,11 @@ module.exports = {
 					is_delete: {
 						[Op.not]: ["2"]
 					}
-				}
+				},
+				order: [
+					// will return `name`  DESC 降序  ASC 升序
+					["sort", "DESC"],
+				]
 			});
 			let result = [];
 			type.map(item => {

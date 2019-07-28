@@ -53,7 +53,18 @@ module.exports = {
 			});
 			let result = [];
 			car.map(item => {
-				result.push(item.dataValues);
+				result.push({
+					id: item.id,
+					goodsid: item.goodsid,
+					goodsName: item.goodsDetail.name,
+					shopid: item.shopid,
+					shopName: item.shopDetail.name,
+					num: item.num,
+					price: item.goodsDetail.price,
+					package_cost: item.goodsDetail.package_cost,
+					url: item.goodsDetail.url,
+					send_price: item.shopDetail.send_price
+				});
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {

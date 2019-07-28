@@ -4,7 +4,8 @@ module.exports = function(sequelize) {
 		id: {
 			type: Sequelize.INTEGER(11),
 			allowNull: false,
-			primaryKey: true
+			primaryKey: true,
+			autoIncrement: true
 		},
 		openid: {
 			type: Sequelize.STRING(255),
@@ -23,7 +24,7 @@ module.exports = function(sequelize) {
 			allowNull: true
 		},
 		total_price: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.STRING(255),
 			allowNull: true
 		},
 		discount_price: {
