@@ -48,6 +48,7 @@ app.all("*", (req, res, next) => {
 controller(app);
 
 const httpsServer = https.createServer(credentials, app);
+
 // 启动服务器，监听对应的端口
 httpsServer.listen(443, () => {
 	console.log(chalk.yellow("server is listenning 443"));
