@@ -11,16 +11,14 @@ module.exports = {
 	// 增加订单
 	addOrder: async (req, res) => {
 		try {
-			let body = req.body;
-			body.order_time = moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss");
-			await orderModel.create({
-				openid: body.openid,
-				shopid: body.shopid,
-				order_list: body.order_list,
-				desc: body.desc,
-				total_price: body.totalPrice,
-				order_time:	body.order_time
+			let data = req.body.data;
+			// body.order_time = moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss");
+			// let data = body.data;
+			data.map(item => {
+				item.order_time = moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss");
+				item.openid = req.body.openid;
 			});
+			await orderModel.bulkCreate(data);
 			return res.send(resultMessage.success("success"));
 		} catch (error) {
 			console.log(error);

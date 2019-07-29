@@ -55,9 +55,9 @@ module.exports = {
 			car.map(item => {
 				result.push({
 					id: item.id,
-					goodsid: item.goodsid,
+					goodsid: item.goodsDetail.goodsid,
 					goodsName: item.goodsDetail.name,
-					shopid: item.shopid,
+					shopid: item.shop_id,
 					shopName: item.shopDetail.name,
 					num: item.num,
 					price: item.goodsDetail.price,

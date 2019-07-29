@@ -19,8 +19,12 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(10000),
 			allowNull: false
 		},
-		desc: {
-			type: Sequelize.STRING(45),
+		send_price: {
+			type: Sequelize.STRING(255),
+			allowNull: true
+		},
+		package_cost: {
+			type: Sequelize.STRING(255),
 			allowNull: true
 		},
 		total_price: {
@@ -28,12 +32,12 @@ module.exports = function(sequelize) {
 			allowNull: true
 		},
 		discount_price: {
-			type: Sequelize.INTEGER(11),
+			type: Sequelize.STRING(255),
 			allowNull: true,
 			defaultValue: "0"
 		},
-		order_time: {
-			type: Sequelize.DATE,
+		desc: {
+			type: Sequelize.STRING(45),
 			allowNull: true
 		},
 		status: {
@@ -41,6 +45,10 @@ module.exports = function(sequelize) {
 			allowNull: false,
 			defaultValue: "1",
 			primaryKey: true
+		},
+		order_time: {
+			type: Sequelize.DATE,
+			allowNull: true
 		},
 		is_delete: {
 			type: Sequelize.INTEGER(11),
