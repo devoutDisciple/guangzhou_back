@@ -8,6 +8,7 @@ const orderController = require("./orderController");
 const evaluateController = require("./evaluateController");
 const carController = require("./carController");
 const collectionController = require("./collectionController");
+const adverController = require("./adverController");
 const router = (app) => {
 	// 用户
 	app.use("/user", userController);
@@ -15,6 +16,8 @@ const router = (app) => {
 	app.use("/swiper", swiperController);
 	// 位置信息
 	app.use("/position", positionController);
+	// 获取广告信息
+	app.use("/adver", adverController);
 	// 购物车
 	app.use("/car", carController);
 	// 收藏
