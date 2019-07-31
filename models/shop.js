@@ -11,20 +11,22 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: false
 		},
-		status: {
-			type: Sequelize.INTEGER(11),
-			allowNull: false,
-			defaultValue: "1"
-		},
-		typeid: {
-			type: Sequelize.INTEGER(11),
-			allowNull: false,
-			defaultValue: "1"
+		phone: {
+			type: Sequelize.STRING(255),
+			allowNull: true
 		},
 		address: {
 			type: Sequelize.STRING(500),
 			allowNull: true,
 			defaultValue: "地址"
+		},
+		sn: {
+			type: Sequelize.STRING(255),
+			allowNull: true
+		},
+		key: {
+			type: Sequelize.STRING(255),
+			allowNull: true
 		},
 		campus: {
 			type: Sequelize.STRING(45),

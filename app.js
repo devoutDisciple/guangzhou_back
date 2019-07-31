@@ -26,7 +26,7 @@ app.use(sessionParser({
 	},
 	"name": "session_id"    // 在浏览器中生成cookie的名称key，默认是connect.sid
 }));
-app.use(express.static(path.join(__dirname, "./public")));
+// app.use(express.static(path.join(__dirname, "./public")));
 // parse application/json
 app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
