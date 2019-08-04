@@ -10,6 +10,7 @@ const ShopModel = shop(sequelize);
 carModel.belongsTo(ShopModel, { foreignKey: "shop_id", targetKey: "id", as: "shopDetail",});
 
 module.exports = {
+
 	// 添加购物车
 	addCarGoods: async (req, res) => {
 		let body = req.body;
@@ -22,7 +23,13 @@ module.exports = {
 			});
 			console.log(originCarItem);
 			if(originCarItem) {
-				return res.send(resultMessage.success("have one"));
+				await carModel.increment(["num"], {
+					by: 1,
+					where: {
+						id: originCarItem.id
+					}
+				});
+				return res.send(resultMessage.success([]));
 			}
 			await carModel.create(body);
 			res.send(resultMessage.success([]));
@@ -31,6 +38,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	// 删除购物车
 	delteItem: async (req, res) => {
 		let body = req.body;
@@ -46,6 +54,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	// 根据openid获取购物车信息
 	getByOpenid: async (req, res) => {
 		let openid = req.query.openid;
@@ -88,6 +97,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	// 修改购物车商品的数量
 	modifyNum: async (req, res) => {
 		let id = req.body.id, num = req.body.num;
@@ -101,6 +111,22 @@ module.exports = {
 				}
 			});
 			res.send(resultMessage.success([]));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
+
+	// 根据openid获取购物车数量
+	getCarNumByOpenid: async (req, res) => {
+		let openid = req.query.openid;
+		try {
+			let car = await carModel.count("id", {
+				where: {
+					openid: openid
+				}
+			});
+			res.send(resultMessage.success(car));
 		} catch (error) {
 			console.log(error);
 			return res.send(resultMessage.error([]));
