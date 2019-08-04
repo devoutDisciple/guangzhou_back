@@ -31,6 +31,21 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+	// 删除购物车
+	delteItem: async (req, res) => {
+		let body = req.body;
+		try {
+			await carModel.destroy({
+				where: {
+					id: body.id,
+				}
+			});
+			res.send(resultMessage.success("success"));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
 	// 根据openid获取购物车信息
 	getByOpenid: async (req, res) => {
 		let openid = req.query.openid;

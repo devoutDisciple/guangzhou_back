@@ -14,6 +14,10 @@ router.post("/addCarGoods", (req, res) => {
 router.post("/modifyNum", (req, res) => {
 	carService.modifyNum(req, res);
 });
+// 删除购物车  onDeleteCar
+router.post("/delteItem", (req, res) => {
+	carService.delteItem(req, res);
+});
 
 
 module.exports = router;

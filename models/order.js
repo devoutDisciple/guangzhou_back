@@ -9,15 +9,27 @@ module.exports = function(sequelize) {
 		},
 		openid: {
 			type: Sequelize.STRING(255),
-			allowNull: false
+			allowNull: true
+		},
+		people: {
+			type: Sequelize.STRING(255),
+			allowNull: true
+		},
+		phone: {
+			type: Sequelize.STRING(255),
+			allowNull: true
+		},
+		address: {
+			type: Sequelize.STRING(255),
+			allowNull: true
 		},
 		shopid: {
 			type: Sequelize.INTEGER(11),
-			allowNull: false
+			allowNull: true
 		},
 		order_list: {
 			type: Sequelize.STRING(10000),
-			allowNull: false
+			allowNull: true
 		},
 		send_price: {
 			type: Sequelize.STRING(255),
@@ -40,11 +52,15 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: true
 		},
+		print: {
+			type: Sequelize.INTEGER(255),
+			allowNull: true,
+			defaultValue: "1"
+		},
 		status: {
 			type: Sequelize.STRING(45),
-			allowNull: false,
-			defaultValue: "1",
-			primaryKey: true
+			allowNull: true,
+			defaultValue: "1"
 		},
 		order_time: {
 			type: Sequelize.DATE,

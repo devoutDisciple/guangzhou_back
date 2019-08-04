@@ -16,6 +16,16 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(8000),
 			allowNull: true
 		},
+		siteX: {
+			type: Sequelize.STRING(255),
+			allowNull: true,
+			defaultValue: "113.255114"
+		},
+		siteY: {
+			type: Sequelize.STRING(255),
+			allowNull: true,
+			defaultValue: "23.148939"
+		},
 		sort: {
 			type: Sequelize.INTEGER(11),
 			allowNull: false,

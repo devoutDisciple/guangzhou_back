@@ -40,8 +40,7 @@ module.exports = function(sequelize) {
 		},
 		modify_time: {
 			type: Sequelize.DATE,
-			allowNull: true,
-			timestamps: false
+			allowNull: true
 		}
 	}, {
 		tableName: "bill",
