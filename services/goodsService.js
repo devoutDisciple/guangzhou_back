@@ -4,6 +4,7 @@ const goods = require("../models/goods");
 const GoodsModel = goods(sequelize);
 
 module.exports = {
+
 	// 获取同一家商店的所有食物
 	getByShopId: async (req, res) => {
 		let id = req.query.id;
@@ -23,6 +24,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	// 获取今日推荐
 	getToday: async (req, res) => {
 		let position = req.query.position;
@@ -30,7 +32,8 @@ module.exports = {
 			let goods = await GoodsModel.findAll({
 				where: {
 					position: position,
-					today: 1
+					today: 1,
+					show: 1
 				},
 				order: [
 					// will return `name`  DESC 降序  ASC 升序
@@ -47,6 +50,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	// 根据id获取商品详情
 	getById: async (req, res) => {
 		let id = req.query.id;
@@ -62,12 +66,14 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	//  获取同个校园的全部商品
 	getByCampus: async (req, res) => {
 		try {
 			let goods = await GoodsModel.findAll({
 				where: {
-					position: req.query.position
+					position: req.query.position,
+					show: 1
 				},
 				order: [
 					// will return `name`  DESC 降序  ASC 升序
@@ -84,6 +90,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	// 根据商品id获取商品
 	getByGoodsId: async (req, res) => {
 		let id = req.query.id;
@@ -99,6 +106,7 @@ module.exports = {
 			return {};
 		}
 	},
+
 	// 增加不同商品的销量
 	addSales: async (req, res) => {
 		let body = req.body;
