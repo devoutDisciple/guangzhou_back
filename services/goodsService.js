@@ -2,6 +2,9 @@ const resultMessage = require("../util/resultMessage");
 const sequelize = require("../dataSource/MysqlPoolClass");
 const goods = require("../models/goods");
 const GoodsModel = goods(sequelize);
+const shop = require("../models/shop");
+const ShopModel = shop(sequelize);
+GoodsModel.belongsTo(ShopModel, { foreignKey: "shopid", targetKey: "id", as: "shopDetail",});
 
 module.exports = {
 
@@ -39,10 +42,21 @@ module.exports = {
 					// will return `name`  DESC 降序  ASC 升序
 					["sort", "DESC"],
 				],
+				include: [{
+					model: ShopModel,
+					as: "shopDetail",
+				}],
 			});
 			let result = [];
 			goods.map(item => {
-				result.push(item.dataValues);
+				let temp = {
+					...(item.dataValues),
+					start_time: item.shopDetail.start_time,
+					end_time: item.shopDetail.end_time,
+					shopStatus: item.shopDetail.status
+				};
+				delete temp.shopDetail;
+				result.push(temp);
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {
@@ -79,10 +93,21 @@ module.exports = {
 					// will return `name`  DESC 降序  ASC 升序
 					["sort", "DESC"],
 				],
+				include: [{
+					model: ShopModel,
+					as: "shopDetail",
+				}],
 			});
 			let result = [];
 			goods.map(item => {
-				result.push(item.dataValues);
+				let temp = {
+					...(item.dataValues),
+					start_time: item.shopDetail.start_time,
+					end_time: item.shopDetail.end_time,
+					shopStatus: item.shopDetail.status
+				};
+				delete temp.shopDetail;
+				result.push(temp);
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {
