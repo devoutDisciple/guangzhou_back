@@ -87,8 +87,11 @@ module.exports = {
 					price: item.goodsDetail.price,
 					package_cost: item.goodsDetail.package_cost,
 					url: item.goodsDetail.url,
-					send_price: item.shopDetail.send_price
-
+					send_price: item.shopDetail.send_price,
+					status: item.status,
+					start_time: item.shopDetail.start_time,
+					end_time: item.shopDetail.end_time,
+					shopStatus: item.shopDetail.status
 				});
 			});
 			res.send(resultMessage.success(result));
