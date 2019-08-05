@@ -15,11 +15,19 @@ module.exports = {
 			let goods = await GoodsModel.findAll({
 				where: {
 					shopid: id
-				}
+				},
+				include: [{
+					model: ShopModel,
+					as: "shopDetail",
+				}],
 			});
 			let result = [];
 			goods.map(item => {
-				result.push(item.dataValues);
+				item.start_time = item.shopDetail.start_time;
+				item.end_time = item.shopDetail.end_time;
+				item.shopStatus = item.shopDetail.status;
+				item.shopDetail = {};
+				result.push(item);
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {
@@ -49,14 +57,11 @@ module.exports = {
 			});
 			let result = [];
 			goods.map(item => {
-				let temp = {
-					...(item.dataValues),
-					start_time: item.shopDetail.start_time,
-					end_time: item.shopDetail.end_time,
-					shopStatus: item.shopDetail.status
-				};
-				delete temp.shopDetail;
-				result.push(temp);
+				item.start_time = item.shopDetail.start_time;
+				item.end_time = item.shopDetail.end_time;
+				item.shopStatus = item.shopDetail.status;
+				delete item.shopDetail;
+				result.push(item);
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {
@@ -100,14 +105,11 @@ module.exports = {
 			});
 			let result = [];
 			goods.map(item => {
-				let temp = {
-					...(item.dataValues),
-					start_time: item.shopDetail.start_time,
-					end_time: item.shopDetail.end_time,
-					shopStatus: item.shopDetail.status
-				};
-				delete temp.shopDetail;
-				result.push(temp);
+				item.start_time = item.shopDetail.start_time;
+				item.end_time = item.shopDetail.end_time;
+				item.shopStatus = item.shopDetail.status;
+				delete item.shopDetail;
+				result.push(item);
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {

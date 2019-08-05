@@ -124,11 +124,12 @@ module.exports = {
 	getCarNumByOpenid: async (req, res) => {
 		let openid = req.query.openid;
 		try {
-			let car = await carModel.count("id", {
+			let car = await carModel.count({
 				where: {
 					openid: openid
 				}
 			});
+			console.log(car);
 			res.send(resultMessage.success(car));
 		} catch (error) {
 			console.log(error);
