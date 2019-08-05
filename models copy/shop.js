@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 module.exports = function(sequelize) {
-	return sequelize.define("goods", {
+	return sequelize.define("shop", {
 		id: {
 			type: Sequelize.INTEGER(11),
 			allowNull: false,
@@ -11,60 +11,67 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: false
 		},
-		position: {
+		phone: {
 			type: Sequelize.STRING(255),
 			allowNull: true
 		},
-		title: {
-			type: Sequelize.STRING(800),
-			allowNull: true
+		address: {
+			type: Sequelize.STRING(500),
+			allowNull: true,
+			defaultValue: "地址"
 		},
-		url: {
+		sn: {
 			type: Sequelize.STRING(255),
-			allowNull: false
-		},
-		desc: {
-			type: Sequelize.STRING(8000),
 			allowNull: true
+		},
+		key: {
+			type: Sequelize.STRING(255),
+			allowNull: true
+		},
+		campus: {
+			type: Sequelize.STRING(45),
+			allowNull: true,
+			defaultValue: "北京大学"
 		},
 		sales: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,
 			defaultValue: "0"
 		},
-		price: {
-			type: Sequelize.STRING(11),
+		desc: {
+			type: Sequelize.STRING(45),
 			allowNull: true,
+			defaultValue: "地址"
+		},
+		start_price: {
+			type: Sequelize.INTEGER(11),
+			allowNull: false,
 			defaultValue: "0"
 		},
-		shopid: {
-			type: Sequelize.STRING(45),
-			allowNull: false
+		send_price: {
+			type: Sequelize.INTEGER(11),
+			allowNull: false,
+			defaultValue: "0"
 		},
-		package_cost: {
-			type: Sequelize.STRING(45),
-			allowNull: true
-		},
-		specification: {
+		special: {
 			type: Sequelize.STRING(800),
 			allowNull: true
 		},
-		today: {
-			type: Sequelize.INTEGER(11),
+		start_time: {
+			type: Sequelize.STRING(255),
 			allowNull: true,
-			defaultValue: "2"
+			defaultValue: "00:00"
+		},
+		end_time: {
+			type: Sequelize.STRING(255),
+			allowNull: true,
+			defaultValue: "23:59"
+		},
+		invite: {
+			type: Sequelize.INTEGER(11),
+			allowNull: true
 		},
 		sort: {
-			type: Sequelize.INTEGER(11),
-			allowNull: true,
-			defaultValue: "1"
-		},
-		leave: {
-			type: Sequelize.INTEGER(11),
-			allowNull: true,
-			defaultValue: "1"
-		},
-		show: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,
 			defaultValue: "1"
@@ -75,7 +82,7 @@ module.exports = function(sequelize) {
 			defaultValue: "1"
 		}
 	}, {
-		tableName: "goods",
+		tableName: "shop",
 		timestamps: false
 	});
 };
