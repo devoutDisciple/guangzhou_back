@@ -16,7 +16,7 @@ router.get("/getById", (req, res) => {
 });
 // 指定id的商品增加销量
 router.post("/addSales", (req, res) => {
-	goodsService.getByShopId(req, res);
+	goodsService.addSales(req, res);
 });
 // 获取今日推荐
 router.get("/getToday", (req, res) => {
