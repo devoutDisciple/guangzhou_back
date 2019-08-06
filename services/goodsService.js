@@ -23,11 +23,26 @@ module.exports = {
 			});
 			let result = [];
 			goods.map(item => {
-				item.start_time = item.shopDetail.start_time;
-				item.end_time = item.shopDetail.end_time;
-				item.shopStatus = item.shopDetail.status;
-				item.shopDetail = {};
-				result.push(item);
+				let temp = {
+					id: item.id,
+					name: item.name,
+					position: item.position,
+					title: item.title,
+					url: item.url,
+					desc: item.desc,
+					sales: item.sales,
+					price: item.price,
+					shopid: item.shopid,
+					package_cost: item.package_cost,
+					today: item.today,
+					sort: item.sort,
+					leave: item.leave,
+					show: item.show,
+					start_time: item.shopDetail.start_time,
+					end_time: item.shopDetail.end_time,
+					shopStatus: item.shopDetail.status,
+				};
+				result.push(temp);
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {
@@ -57,11 +72,26 @@ module.exports = {
 			});
 			let result = [];
 			goods.map(item => {
-				item.start_time = item.shopDetail.start_time;
-				item.end_time = item.shopDetail.end_time;
-				item.shopStatus = item.shopDetail.status;
-				delete item.shopDetail;
-				result.push(item);
+				let temp = {
+					id: item.id,
+					name: item.name,
+					position: item.position,
+					title: item.title,
+					url: item.url,
+					desc: item.desc,
+					sales: item.sales,
+					price: item.price,
+					shopid: item.shopid,
+					package_cost: item.package_cost,
+					today: item.today,
+					sort: item.sort,
+					leave: item.leave,
+					show: item.show,
+					start_time: item.shopDetail.start_time,
+					end_time: item.shopDetail.end_time,
+					shopStatus: item.shopDetail.status,
+				};
+				result.push(temp);
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {
@@ -105,11 +135,26 @@ module.exports = {
 			});
 			let result = [];
 			goods.map(item => {
-				item.start_time = item.shopDetail.start_time;
-				item.end_time = item.shopDetail.end_time;
-				item.shopStatus = item.shopDetail.status;
-				delete item.shopDetail;
-				result.push(item);
+				let temp = {
+					id: item.id,
+					name: item.name,
+					position: item.position,
+					title: item.title,
+					url: item.url,
+					desc: item.desc,
+					sales: item.sales,
+					price: item.price,
+					shopid: item.shopid,
+					package_cost: item.package_cost,
+					today: item.today,
+					sort: item.sort,
+					leave: item.leave,
+					show: item.show,
+					start_time: item.shopDetail.start_time,
+					end_time: item.shopDetail.end_time,
+					shopStatus: item.shopDetail.status,
+				};
+				result.push(temp);
 			});
 			res.send(resultMessage.success(result));
 		} catch (error) {
