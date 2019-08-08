@@ -55,6 +55,6 @@ httpsServer.listen(443, () => {
 });
 
 // 监听3001端口
-// app.listen(3001, () => {
-// 	console.log(chalk.yellow("广州小程序：server is listenning 3001"));
-// });
+app.listen(3001, () => {
+	console.log(chalk.yellow("广州小程序：server is listenning 3001"));
+});

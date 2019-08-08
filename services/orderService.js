@@ -6,6 +6,8 @@ const moment = require("moment");
 const shop = require("../models/shop");
 const ShopModel = shop(sequelize);
 orderModel.belongsTo(ShopModel, { foreignKey: "shopid", targetKey: "id", as: "shopDetail",});
+const goods = require("../models/goods");
+const goodsModel = goods(sequelize);
 
 module.exports = {
 	// 增加订单
@@ -17,6 +19,22 @@ module.exports = {
 			data.map(item => {
 				item.order_time = moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss");
 				item.openid = req.body.openid;
+				let orderList = item.oder_list;
+				orderList = JSON.parse(item.order_list) || [];
+				orderList.map(async (order )=> {
+					await goodsModel.increment(["sales"], {
+						by: order.num,
+						where: {
+							id: order.goodsid
+						}
+					});
+					await ShopModel.increment(["sales"], {
+						by: 1,
+						where: {
+							id: item.shopid
+						}
+					});
+				});
 			});
 			await orderModel.bulkCreate(data);
 			return res.send(resultMessage.success("success"));
@@ -54,6 +72,7 @@ module.exports = {
 					shopName: item.shopDetail.name,
 					status: item.status,
 					total_price: item.total_price,
+					package_cost: item.package_cost
 				});
 			});
 			res.send(resultMessage.success(result));
