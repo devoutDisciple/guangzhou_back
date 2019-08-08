@@ -23,6 +23,15 @@ module.exports = function(sequelize) {
 			type: Sequelize.INTEGER(255),
 			allowNull: true,
 			defaultValue: "1"
+		},
+		show: {
+			type: Sequelize.INTEGER(11),
+			allowNull: false,
+			defaultValue: "2"
+		},
+		time: {
+			type: Sequelize.INTEGER(11),
+			allowNull: true
 		}
 	}, {
 		tableName: "adver",

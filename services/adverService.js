@@ -13,25 +13,8 @@ module.exports = {
 	// 获取广告数据
 	getAll: async (req, res) => {
 		try {
-			let data = await adverModel.findOne({
-				include: [{
-					model: GoodsModel,
-					as: "goodsDetail",
-				}, {
-					model: ShopModel,
-					as: "shopDetail",
-				}],
-			});
-			let result = {
-				id: data.id,
-				url: data.url,
-				shop_id: data.shop_id,
-				goods_id: data.goods_id,
-				shopName: data.shopDetail.name,
-				goodsName: data.goodsDetail.name,
-				status: data.status,
-			};
-			res.send(resultMessage.success(result));
+			let data = await adverModel.findOne();
+			res.send(resultMessage.success(data));
 		} catch (error) {
 			console.log(error);
 			return res.send(resultMessage.error([]));

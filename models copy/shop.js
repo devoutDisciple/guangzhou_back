@@ -67,6 +67,11 @@ module.exports = function(sequelize) {
 			allowNull: true,
 			defaultValue: "23:59"
 		},
+		status: {
+			type: Sequelize.INTEGER(11),
+			allowNull: true,
+			defaultValue: "1"
+		},
 		invite: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true
