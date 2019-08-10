@@ -1,3 +1,5 @@
+/* jshint indent: 2 */
+
 const Sequelize = require("sequelize");
 module.exports = function(sequelize) {
 	return sequelize.define("swiper", {
@@ -11,8 +13,17 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(255),
 			allowNull: true
 		},
+		type: {
+			type: Sequelize.INTEGER(11),
+			allowNull: true,
+			defaultValue: "1"
+		},
 		shopid: {
 			type: Sequelize.STRING(45),
+			allowNull: true
+		},
+		goodsid: {
+			type: Sequelize.INTEGER(11),
 			allowNull: true
 		},
 		campus: {
