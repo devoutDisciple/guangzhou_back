@@ -38,6 +38,18 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(255),
 			allowNull: false
 		},
+		our_money: {
+			type: Sequelize.STRING(255),
+			allowNull: false
+		},
+		other_money: {
+			type: Sequelize.STRING(255),
+			allowNull: false
+		},
+		real_money: {
+			type: Sequelize.STRING(255),
+			allowNull: false
+		},
 		status: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,
