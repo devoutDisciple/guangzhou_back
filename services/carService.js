@@ -79,19 +79,20 @@ module.exports = {
 			car.map(item => {
 				result.push({
 					id: item.id,
-					goodsid: item.goodsDetail.goodsid,
+					goodsid: item.goods_id,
 					goodsName: item.goodsDetail.name,
 					shopid: item.shop_id,
 					shopName: item.shopDetail.name,
 					num: item.num,
-					price: item.goodsDetail.price,
+					price: item.price,
 					package_cost: item.goodsDetail.package_cost,
 					url: item.goodsDetail.url,
 					send_price: item.shopDetail.send_price,
 					leave: item.goodsDetail.leave,
 					start_time: item.shopDetail.start_time,
 					end_time: item.shopDetail.end_time,
-					shopStatus: item.shopDetail.status
+					shopStatus: item.shopDetail.status,
+					specification: item.specification
 				});
 			});
 			res.send(resultMessage.success(result));

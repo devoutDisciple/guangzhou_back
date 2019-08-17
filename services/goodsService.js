@@ -90,6 +90,7 @@ module.exports = {
 					start_time: item.shopDetail.start_time,
 					end_time: item.shopDetail.end_time,
 					shopStatus: item.shopDetail.status,
+					specification: item.specification
 				};
 				result.push(temp);
 			});
@@ -153,6 +154,7 @@ module.exports = {
 					start_time: item.shopDetail.start_time,
 					end_time: item.shopDetail.end_time,
 					shopStatus: item.shopDetail.status,
+					specification: item.specification
 				};
 				result.push(temp);
 			});

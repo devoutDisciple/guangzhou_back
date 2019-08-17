@@ -5,7 +5,7 @@ const PayUtil = require("../util/PayUtil");
 const config = require("../util/AppConfig");
 const md5 = require("md5");
 module.exports = {
-	// 获取同一家商店的所有食物
+	// 支付订单
 	payOrder: async (req, res) => {
 		try {
 			let orderid = PayUtil.createOrderid();
@@ -15,7 +15,7 @@ module.exports = {
 				nonce_str: PayUtil.getNonceStr(),	//随机字符串
 				body: "贝沃思美食",// 商品描述
 				out_trade_no: orderid, // 用户订单号
-				total_fee: Number(req.query.total_fee) * 100, //商品价格 单位分
+				total_fee: (Number(req.query.total_fee) * 100).toFixed(0), //商品价格 单位分
 				spbill_create_ip: "47.106.208.52", // 发起访问ip
 				//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
 				notify_url: "https://www.kdsou.com/kdchange/service_bak/notify.php",

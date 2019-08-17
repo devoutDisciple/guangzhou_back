@@ -1,5 +1,3 @@
-/* jshint indent: 2 */
-
 const Sequelize = require("sequelize");
 module.exports = function(sequelize) {
 	return sequelize.define("car", {
@@ -29,6 +27,16 @@ module.exports = function(sequelize) {
 		create_time: {
 			type: Sequelize.STRING(255),
 			allowNull: false
+		},
+		specification: {
+			type: Sequelize.STRING(8000),
+			allowNull: false,
+			defaultValue: "{}"
+		},
+		price: {
+			type: Sequelize.STRING(45),
+			allowNull: false,
+			defaultValue: "0"
 		},
 		is_delete: {
 			type: Sequelize.INTEGER(11),

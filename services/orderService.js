@@ -2,9 +2,9 @@ const resultMessage = require("../util/resultMessage");
 const sequelize = require("../dataSource/MysqlPoolClass");
 const order = require("../models/order");
 const orderModel = order(sequelize);
-const moment = require("moment");
 const shop = require("../models/shop");
 const ShopModel = shop(sequelize);
+const moment = require("moment");
 orderModel.belongsTo(ShopModel, { foreignKey: "shopid", targetKey: "id", as: "shopDetail",});
 const goods = require("../models/goods");
 const goodsModel = goods(sequelize);
@@ -67,7 +67,7 @@ module.exports = {
 					desc: item.desc,
 					order_list: JSON.parse(item.order_list) || [],
 					discount_price: item.discount_price,
-					order_time: moment(item.order_time).format("YYYY-MM-DD HH:mm:ss"),
+					order_time: item.order_time,
 					shopid: item.shopid,
 					shopName: item.shopDetail.name,
 					status: item.status,
