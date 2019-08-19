@@ -19,6 +19,10 @@ module.exports = function(sequelize) {
 			type: Sequelize.INTEGER(11),
 			allowNull: true
 		},
+		campus: {
+			type: Sequelize.STRING(45),
+			allowNull: false,
+		},
 		num: {
 			type: Sequelize.INTEGER(11),
 			allowNull: true,

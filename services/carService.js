@@ -14,6 +14,7 @@ module.exports = {
 	// 添加购物车
 	addCarGoods: async (req, res) => {
 		let body = req.body;
+		body.campus = body.position;
 		try {
 			let originCarItem = await carModel.findOne({
 				where: {
@@ -21,7 +22,6 @@ module.exports = {
 					goods_id: body.goods_id,
 				},
 			});
-			console.log(originCarItem);
 			if(originCarItem) {
 				await carModel.increment(["num"], {
 					by: 1,
@@ -61,7 +61,8 @@ module.exports = {
 		try {
 			let car = await carModel.findAll({
 				where: {
-					openid: openid
+					openid: openid,
+					campus: req.query.position
 				},
 				include: [{
 					model: GoodsModel,
@@ -92,7 +93,8 @@ module.exports = {
 					start_time: item.shopDetail.start_time,
 					end_time: item.shopDetail.end_time,
 					shopStatus: item.shopDetail.status,
-					specification: item.specification
+					specification: item.specification,
+					start_price: item.shopDetail.start_price
 				});
 			});
 			res.send(resultMessage.success(result));
@@ -127,7 +129,8 @@ module.exports = {
 		try {
 			let car = await carModel.count({
 				where: {
-					openid: openid
+					openid: openid,
+					campus: req.query.position
 				}
 			});
 			console.log(car);
