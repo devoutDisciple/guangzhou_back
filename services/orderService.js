@@ -45,21 +45,24 @@ module.exports = {
 	},
 	// 获取订单
 	getListByOpenid: async (req, res) => {
-		let openid = req.query.openid;
+		let openid = req.query.openid, type = req.query.type;
+		let params = {
+			where: {
+				openid: openid
+			},
+			order: [
+				// will return `name`  DESC 降序  ASC 升序
+				["order_time", "DESC"],
+			],
+			include: [{
+				model: ShopModel,
+				as: "shopDetail",
+			}],
+		};
+		if(type == 2) params.where.status =  3; // 待评价
+		if(type == 3) params.where.status =  6; // 退款中
 		try {
-			let list = await orderModel.findAll({
-				where: {
-					openid: openid
-				},
-				order: [
-					// will return `name`  DESC 降序  ASC 升序
-					["order_time", "DESC"],
-				],
-				include: [{
-					model: ShopModel,
-					as: "shopDetail",
-				}],
-			});
+			let list = await orderModel.findAll(params);
 			let result = [];
 			list.map(item => {
 				result.push({
@@ -72,7 +75,8 @@ module.exports = {
 					shopName: item.shopDetail.name,
 					status: item.status,
 					total_price: item.total_price,
-					package_cost: item.package_cost
+					package_cost: item.package_cost,
+					send_price: item.send_price
 				});
 			});
 			res.send(resultMessage.success(result));
