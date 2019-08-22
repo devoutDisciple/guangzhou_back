@@ -17,7 +17,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
-	// 根据商店id获取评价
+	// 根据商品id获取评价
 	getEvaluateByGoodsId: async (req, res) => {
 		let goods_id = req.query.goods_id;
 		try {
@@ -32,19 +32,14 @@ module.exports = {
 				],
 			});
 			// 获取评价平均值
-			let sumEvaluate = await evaluateModel.sum("shop_grade", {
+			let sumEvaluate = await evaluateModel.sum("goods_grade", {
 				where: {
 					goods_id: goods_id
 				}
 			});
-			console.log(sumEvaluate);
-			let result = [];
-			evaluates.map(item => {
-				result.push(item.dataValues);
-			});
 			res.send(resultMessage.success({
 				sumEvaluate,
-				result
+				result: evaluates
 			}));
 		} catch (error) {
 			console.log(error);

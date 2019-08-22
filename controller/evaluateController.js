@@ -8,7 +8,7 @@ router.post("/addEvaluate", async (req, res) => {
 	let result = await evaluateService.addEvaluate(req, res);
 	if(result == "success") {
 		await orderService.updateStatus(req, res, {
-			status: 7,
+			status: 5,
 			orderid: req.body.orderid
 		});
 	}

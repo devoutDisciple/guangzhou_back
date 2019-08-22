@@ -43,6 +43,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	// 获取订单
 	getListByOpenid: async (req, res) => {
 		let openid = req.query.openid, type = req.query.type;
@@ -85,6 +86,34 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
+	// 更改订单状态
+	updateOrderStatus: async (req, res) => {
+		let body = req.body;
+		try {
+			await orderModel.update({status: body.status}, {
+				where: {
+					id: body.id
+				}
+			});
+			res.send(resultMessage.success("success"));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
+
+	// 通过订单id获取订单
+	getOrderById: async (req, res) => {
+		let id = req.query.id;
+		let order = await orderModel.findOne({
+			where: {
+				id: id
+			}
+		});
+		res.send(resultMessage.success(order));
+	},
+
 	// 更改订单的状态
 	updateStatus: async (req, res, params) => {
 		// let body = req.body;

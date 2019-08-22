@@ -37,11 +37,7 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: true
 		},
-		shop_grade: {
-			type: Sequelize.STRING(45),
-			allowNull: true
-		},
-		sender_grade: {
+		goods_grade: {
 			type: Sequelize.STRING(45),
 			allowNull: true
 		},
