@@ -16,6 +16,7 @@ module.exports = {
 			let data = req.body.data;
 			// body.order_time = moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss");
 			// let data = body.data;
+			console.log(data, 888);
 			data.map(item => {
 				item.order_time = moment(new Date().getTime()).add(8, "h").format("YYYY-MM-DD HH:mm:ss");
 				item.openid = req.body.openid;
@@ -26,12 +27,6 @@ module.exports = {
 						by: order.num,
 						where: {
 							id: order.goodsid
-						}
-					});
-					await ShopModel.increment(["sales"], {
-						by: 1,
-						where: {
-							id: item.shopid
 						}
 					});
 				});
@@ -109,9 +104,32 @@ module.exports = {
 		let order = await orderModel.findOne({
 			where: {
 				id: id
-			}
+			},
+			include: [{
+				model: ShopModel,
+				as: "shopDetail",
+			}],
 		});
-		res.send(resultMessage.success(order));
+		let obj = {
+			"id": order.id,
+			"openid": order.opnid,
+			"people": order.people,
+			"phone": order.phone,
+			"address": order.address,
+			"shopid": order.shopid,
+			"order_list": order.order_list,
+			"send_price": order.send_price,
+			"package_cost": order.package_cost,
+			"total_price": order.total_price,
+			"discount_price": order.discount_price,
+			"desc": order.desc,
+			"print": order.print,
+			"status": order.status,
+			"order_time": order.order_time,
+			"is_delete": order.is_delete,
+			"shopPhone": order.shopDetail.phone
+		};
+		res.send(resultMessage.success(obj));
 	},
 
 	// 更改订单的状态

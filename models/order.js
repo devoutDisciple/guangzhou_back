@@ -9,6 +9,10 @@ module.exports = function(sequelize) {
 			primaryKey: true,
 			autoIncrement: true
 		},
+		code: {
+			type: Sequelize.STRING(255),
+			allowNull: true
+		},
 		openid: {
 			type: Sequelize.STRING(255),
 			allowNull: true
