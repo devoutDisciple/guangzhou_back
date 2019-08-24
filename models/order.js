@@ -11,7 +11,7 @@ module.exports = function(sequelize) {
 		},
 		code: {
 			type: Sequelize.STRING(255),
-			allowNull: true
+			allowNull: false
 		},
 		openid: {
 			type: Sequelize.STRING(255),
@@ -56,8 +56,7 @@ module.exports = function(sequelize) {
 		},
 		back_money: {
 			type: Sequelize.STRING(45),
-			allowNull: true,
-			defaultValue: "0"
+			allowNull: true
 		},
 		desc: {
 			type: Sequelize.STRING(45),
@@ -72,6 +71,11 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: true,
 			defaultValue: "1"
+		},
+		specification: {
+			type: Sequelize.STRING(45),
+			allowNull: true,
+			defaultValue: ""
 		},
 		order_time: {
 			type: Sequelize.DATE,

@@ -55,6 +55,25 @@ module.exports = {
 		}
 	},
 
+	// 批量删除
+	deleteMany: async (req, res) => {
+		let body = req.body;
+		try {
+			let orderIdList = body.orderIdList;
+			orderIdList.map(async (item) => {
+				await carModel.destroy({
+					where: {
+						id: item,
+					}
+				});
+			});
+			res.send(resultMessage.success("success"));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
+
 	// 根据openid获取购物车信息
 	getByOpenid: async (req, res) => {
 		let openid = req.query.openid;

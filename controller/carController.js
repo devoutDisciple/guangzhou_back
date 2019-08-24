@@ -27,5 +27,10 @@ router.get("/getCarNumByOpenid", (req, res) => {
 	carService.getCarNumByOpenid(req, res);
 });
 
+// 批量删除 deleteMany
+router.post("/deleteMany", (req, res) => {
+	carService.deleteMany(req, res);
+});
+
 
 module.exports = router;

@@ -14,15 +14,15 @@ module.exports = function(sequelize) {
 			allowNull: false
 		},
 		shop_id: {
-			type: Sequelize.INTEGER(255),
+			type: Sequelize.INTEGER(11),
 			allowNull: true
 		},
 		goods_id: {
-			type: Sequelize.INTEGER(255),
+			type: Sequelize.INTEGER(11),
 			allowNull: true
 		},
 		status: {
-			type: Sequelize.INTEGER(255),
+			type: Sequelize.INTEGER(11),
 			allowNull: true,
 			defaultValue: "1"
 		},

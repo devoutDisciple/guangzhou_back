@@ -40,15 +40,15 @@ module.exports = function(sequelize) {
 		},
 		our_money: {
 			type: Sequelize.STRING(255),
-			allowNull: false
+			allowNull: true
 		},
 		other_money: {
 			type: Sequelize.STRING(255),
-			allowNull: false
+			allowNull: true
 		},
 		real_money: {
 			type: Sequelize.STRING(255),
-			allowNull: false
+			allowNull: true
 		},
 		status: {
 			type: Sequelize.INTEGER(11),
