@@ -11,7 +11,13 @@ const https = require("https");
 const path = require("path");
 const privateKey = fs.readFileSync(path.join(__dirname, "./2361522_bws666.com.key"), "utf8");
 const certificate = fs.readFileSync(path.join(__dirname, "./2361522_bws666.com.pem"), "utf8");
+// const pfx = fs.readFileSync(path.join(__dirname, "./apiclient_cert.p12"), "utf8");
+// let pfx = {
+// 	pfx: fs.readFileSync(path.join(__dirname, "./apiclient_cert.p12"), "utf8"), //微信商户平台证书,
+// 	passphrase: 1537649941 // 商家id
+// };
 const credentials = {
+	// pfx: pfx, //微信商户平台证书,
 	key: privateKey,
 	cert: certificate,
 };

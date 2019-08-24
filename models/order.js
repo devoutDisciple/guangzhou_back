@@ -54,6 +54,11 @@ module.exports = function(sequelize) {
 			allowNull: true,
 			defaultValue: "0"
 		},
+		back_money: {
+			type: Sequelize.STRING(45),
+			allowNull: true,
+			defaultValue: "0"
+		},
 		desc: {
 			type: Sequelize.STRING(45),
 			allowNull: true
