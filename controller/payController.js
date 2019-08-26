@@ -11,5 +11,9 @@ router.post("/getBackPayMoney", (req, res) => {
 	payService.getBackPayMoney(req, res);
 });
 
+// 申请退款，改变订单状态为退款中 getBackMoneyStatus
+router.post("/getBackMoneyStatus", (req, res) => {
+	payService.getBackMoneyStatus(req, res);
+});
 
 module.exports = router;

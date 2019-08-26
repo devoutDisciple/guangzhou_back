@@ -68,10 +68,7 @@ module.exports = {
 			+"&refund_fee="+obj.refund_fee
 			+"&total_fee="+obj.total_fee;
 		let stringSignTemp = stringA+"&key=" + obj.key;
-		console.log(stringA, 3333);
-		console.log(stringSignTemp, 4444);
 		stringSignTemp = md5(stringSignTemp).toUpperCase();
-		console.log(stringSignTemp, 555);
 		return stringSignTemp;
 	},
 };

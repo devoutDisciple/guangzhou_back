@@ -88,6 +88,22 @@ module.exports = {
 		}
 	},
 
+	// 申请退款， 改变状态为退款中
+	getBackMoneyStatus: async (req, res) => {
+		try {
+			let orderId = req.body.id;
+			await orderModel.update({status: 6}, {
+				where: {
+					id: orderId
+				}
+			});
+			res.send(resultMessage.success("success"));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
+
 	// 申请退款
 	getBackPayMoney: async(req, res) => {
 		try {
