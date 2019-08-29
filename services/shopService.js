@@ -87,7 +87,6 @@ module.exports = {
 			shops.map(item => {
 				result.push(item.dataValues);
 			});
-			console.log(result, 999);
 			res.send(resultMessage.success(result));
 		} catch (error) {
 			console.log(error);

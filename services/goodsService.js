@@ -1,4 +1,6 @@
 const resultMessage = require("../util/resultMessage");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 const sequelize = require("../dataSource/MysqlPoolClass");
 const goods = require("../models/goods");
 const GoodsModel = goods(sequelize);
@@ -41,6 +43,56 @@ module.exports = {
 					start_time: item.shopDetail.start_time,
 					end_time: item.shopDetail.end_time,
 					shopStatus: item.shopDetail.status,
+				};
+				result.push(temp);
+			});
+			res.send(resultMessage.success(result));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
+	},
+
+	// 根绝商品名称获取类似商品 getGoodsByLikeName
+	getGoodsByLikeName: async (req, res) => {
+		let name = req.query.name;
+		try {
+			let goods = await GoodsModel.findAll({
+				where: {
+					name: {
+						[Op.like]: "%" + name + "%"
+					},
+				},
+				order: [
+					// will return `name`  DESC 降序  ASC 升序
+					["sort", "DESC"],
+				],
+				include: [{
+					model: ShopModel,
+					as: "shopDetail",
+				}],
+			});
+			let result = [];
+			goods.map(item => {
+				let temp = {
+					id: item.id,
+					name: item.name,
+					position: item.position,
+					title: item.title,
+					url: item.url,
+					desc: item.desc,
+					sales: item.sales,
+					price: item.price,
+					shopid: item.shopid,
+					package_cost: item.package_cost,
+					today: item.today,
+					sort: item.sort,
+					leave: item.leave,
+					show: item.show,
+					start_time: item.shopDetail.start_time,
+					end_time: item.shopDetail.end_time,
+					shopStatus: item.shopDetail.status,
+					specification: item.specification
 				};
 				result.push(temp);
 			});
