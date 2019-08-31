@@ -8,6 +8,7 @@ const moment = require("moment");
 orderModel.belongsTo(ShopModel, { foreignKey: "shopid", targetKey: "id", as: "shopDetail",});
 const goods = require("../models/goods");
 const goodsModel = goods(sequelize);
+let printService = require("./printService");
 
 module.exports = {
 	// 增加订单
@@ -31,7 +32,11 @@ module.exports = {
 					});
 				});
 			});
-			await orderModel.bulkCreate(data);
+			let result = await orderModel.bulkCreate(data);
+			console.log(result, 222);
+			await result.map(async (item) => {
+				await printService.printOrder(item.id);
+			});
 			return res.send(resultMessage.success("success"));
 		} catch (error) {
 			console.log(error);
