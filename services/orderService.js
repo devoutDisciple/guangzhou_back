@@ -61,7 +61,7 @@ module.exports = {
 			}],
 		};
 		if(type == 2) params.where.status =  3; // 待评价
-		if(type == 3) params.where.status =  [6, 7]; // 退款中
+		if(type == 3) params.where.status =  [6, 7, 8]; // 退款中
 		try {
 			let list = await orderModel.findAll(params);
 			let result = [];
