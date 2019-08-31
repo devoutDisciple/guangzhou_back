@@ -33,7 +33,6 @@ module.exports = {
 				});
 			});
 			let result = await orderModel.bulkCreate(data);
-			console.log(result, 222);
 			await result.map(async (item) => {
 				await printService.printOrder(item.id);
 			});

@@ -9,6 +9,8 @@ const evaluateController = require("./evaluateController");
 const carController = require("./carController");
 const collectionController = require("./collectionController");
 const adverController = require("./adverController");
+const optionController = require("./optionController");
+
 const router = (app) => {
 	// 用户
 	app.use("/user", userController);
@@ -32,5 +34,7 @@ const router = (app) => {
 	app.use("/order", orderController);
 	// 评价相关
 	app.use("/evaluate", evaluateController);
+	// 意见相关 optionController
+	app.use("/option", optionController);
 };
 module.exports = router;
