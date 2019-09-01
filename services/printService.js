@@ -42,6 +42,11 @@ module.exports = {
 				}],
 			});
 			if(order.shopDetail.auto_print != 1) return;
+			await orderModel.update({print: 2}, {
+				where: {
+					id: orderid
+				}
+			});
 			let sn = order.shopDetail.sn;
 			if(!sn) return "请录入打印机编号";
 			console.log(order);

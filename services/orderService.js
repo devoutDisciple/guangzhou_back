@@ -17,7 +17,6 @@ module.exports = {
 			let data = req.body.data;
 			// body.order_time = moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss");
 			// let data = body.data;
-			console.log(data, 888);
 			data.map(item => {
 				item.order_time = moment(new Date().getTime()).add(8, "h").format("YYYY-MM-DD HH:mm:ss");
 				item.openid = req.body.openid;
