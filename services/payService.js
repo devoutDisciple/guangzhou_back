@@ -64,7 +64,6 @@ module.exports = {
 					xml2js.parseString(body,function(err,result){
 						if(err) return res.send(resultMessage.success("支付失败"));
 						let reData = result.xml;
-						console.log(reData);
 						if(!reData.prepay_id) {
 							return res.send(resultMessage.success(reData.err_code_des ? reData.err_code_des[0] : "支付失败"));
 						}

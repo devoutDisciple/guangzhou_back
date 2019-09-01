@@ -126,8 +126,6 @@ module.exports = {
 	// 修改购物车商品的数量
 	modifyNum: async (req, res) => {
 		let id = req.body.id, num = req.body.num;
-		console.log(id);
-		console.log(num);
 		try {
 			await carModel.increment(["num"], {
 				by: num,
@@ -152,7 +150,6 @@ module.exports = {
 					campus: req.query.position
 				}
 			});
-			console.log(car);
 			res.send(resultMessage.success(car));
 		} catch (error) {
 			console.log(error);

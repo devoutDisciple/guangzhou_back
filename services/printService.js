@@ -67,7 +67,6 @@ module.exports = {
 			orderInfo += "名称　　　　　     数量  金额<BR>";
 			orderInfo += "-------------------------------<BR>";
 			orderList.map(item => {
-				console.log(getLen(item.goodsName));
 				let res_len = Number(24 - getLen(item.goodsName));
 				orderInfo += `${String(item.goodsName).padEnd(res_len)}${String(item.num).padEnd(6)}${(Number(item.price) * Number(item.num)).toFixed(2)}<BR>`;
 				orderInfo += `规格:  ${item.specification}<BR>`;
