@@ -103,36 +103,41 @@ module.exports = {
 
 	// 通过订单id获取订单
 	getOrderById: async (req, res) => {
-		let id = req.query.id;
-		let order = await orderModel.findOne({
-			where: {
-				id: id
-			},
-			include: [{
-				model: ShopModel,
-				as: "shopDetail",
-			}],
-		});
-		let obj = {
-			"id": order.id,
-			"openid": order.opnid,
-			"people": order.people,
-			"phone": order.phone,
-			"address": order.address,
-			"shopid": order.shopid,
-			"order_list": order.order_list,
-			"send_price": order.send_price,
-			"package_cost": order.package_cost,
-			"total_price": order.total_price,
-			"discount_price": order.discount_price,
-			"desc": order.desc,
-			"print": order.print,
-			"status": order.status,
-			"order_time": order.order_time,
-			"is_delete": order.is_delete,
-			"shopPhone": order.shopDetail.phone
-		};
-		res.send(resultMessage.success(obj));
+		try {
+			let id = req.query.id;
+			let order = await orderModel.findOne({
+				where: {
+					id: id
+				},
+				include: [{
+					model: ShopModel,
+					as: "shopDetail",
+				}],
+			});
+			let obj = {
+				"id": order.id,
+				"openid": order.opnid,
+				"people": order.people,
+				"phone": order.phone,
+				"address": order.address,
+				"shopid": order.shopid,
+				"order_list": order.order_list,
+				"send_price": order.send_price,
+				"package_cost": order.package_cost,
+				"total_price": order.total_price,
+				"discount_price": order.discount_price,
+				"desc": order.desc,
+				"print": order.print,
+				"status": order.status,
+				"order_time": order.order_time,
+				"is_delete": order.is_delete,
+				"shopPhone": order.shopDetail ? order.shopDetail.phone : ""
+			};
+			res.send(resultMessage.success(obj));
+		} catch (error) {
+			console.log(error);
+			return res.send(resultMessage.error([]));
+		}
 	},
 
 	// 更改订单的状态

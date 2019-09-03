@@ -17,6 +17,7 @@ module.exports = {
 			return res.send(resultMessage.error([]));
 		}
 	},
+
 	// 根据商品id获取评价
 	getEvaluateByGoodsId: async (req, res) => {
 		let goods_id = req.query.goods_id;

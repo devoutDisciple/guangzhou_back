@@ -41,6 +41,11 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(45),
 			allowNull: true
 		},
+		show: {
+			type: Sequelize.INTEGER(11),
+			allowNull: true,
+			defaultValue: "1"
+		},
 		create_time: {
 			type: Sequelize.BIGINT,
 			allowNull: true
