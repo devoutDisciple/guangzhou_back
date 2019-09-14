@@ -12,7 +12,7 @@ module.exports = {
 	getUser: async (req, res) => {
 		try {
 			let body = req.body;
-			let appid = body.appid, AppSecret = body.AppSecret, code = body.code;
+			let appid = body.appid, AppSecret = body.secret, code = body.code;
 			request
 				.get(`https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${AppSecret}&js_code=${code}&grant_type=authorization_code`,
 					function(error, response, body) {
@@ -35,7 +35,7 @@ module.exports = {
 	register: async (req, res) => {
 		try {
 			let body = req.body;
-			let appid = body.appid, AppSecret = body.AppSecret, code = body.code, avatarUrl = body.avatarUrl, name = body.name;
+			let appid = body.appid, AppSecret = body.secret, code = body.code, avatarUrl = body.avatarUrl, name = body.name;
 			request
 				.get(`https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${AppSecret}&js_code=${code}&grant_type=authorization_code`,
 					function(error, response, body) {
