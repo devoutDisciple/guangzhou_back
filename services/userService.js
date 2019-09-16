@@ -23,7 +23,15 @@ module.exports = {
 							}
 						}).then(async (user) => {
 							if(user) return res.send(resultMessage.success(user));
-							res.send(resultMessage.success("nouser"));
+							// res.send(resultMessage.success("nouser"));
+							UserModel.create({
+								openid: openid,
+								create_time: moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss")
+							}).then((data) => {
+								res.send(resultMessage.success({
+									user: data.dataValues
+								}));
+							});
 						});
 					});
 		} catch (error) {
@@ -50,15 +58,25 @@ module.exports = {
 								name: name,
 								avatarUrl: avatarUrl,
 								create_time: moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss")
-							}).then(data => {
-								console.log(data);
+							}).then(() => {
 								res.send(resultMessage.success({
 									data: openid
 								}));
 							});
-							return res.send(resultMessage.success({
-								data: openid
-							}));
+							await UserModel.update({
+								openid: openid,
+								name: name,
+								avatarUrl: avatarUrl,
+								create_time: moment(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss")
+							}, {
+								where: {
+									openid: openid
+								}
+							}).then(() => {
+								return res.send(resultMessage.success({
+									data: openid
+								}));
+							});
 						});
 					});
 		} catch (error) {
