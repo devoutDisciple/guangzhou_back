@@ -18,6 +18,10 @@ module.exports = {
 				where: {
 					shopid: id
 				},
+				order: [
+					// will return `name`  DESC 降序  ASC 升序
+					["sort", "DESC"],
+				],
 				include: [{
 					model: ShopModel,
 					as: "shopDetail",
@@ -43,6 +47,7 @@ module.exports = {
 					start_time: item.shopDetail.start_time,
 					end_time: item.shopDetail.end_time,
 					shopStatus: item.shopDetail.status,
+					specification: item.specification
 				};
 				result.push(temp);
 			});
