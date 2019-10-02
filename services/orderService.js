@@ -71,7 +71,7 @@ module.exports = {
 					discount_price: item.discount_price,
 					order_time: item.order_time,
 					shopid: item.shopid,
-					shopName: item.shopDetail.name,
+					shopName: item.shopDetail ? item.shopDetail.name : "",
 					status: item.status,
 					total_price: item.total_price,
 					package_cost: item.package_cost,
